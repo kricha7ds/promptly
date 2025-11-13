@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: promptly_development
+
+test:
+  <<: *default
+  database: promptly_test
+
+production:
+  <<: *default
+  database: promptly_production
+  username: promptly
+  password: <%= ENV["PROMPTLY_DATABASE_PASSWORD"] %>
