@@ -35,27 +35,13 @@
     <div>
       <div class="max-w-4xl justicy-center mx-auto mt-8 p-5 bg-amber-50 rounded-2xl">
         <div class="max-w-xl mx-auto flex flex-row flex-wrap gap-3 justify-center">
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">cul</div>
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">tiv</div>
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">ate</div>
-
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">reg</div>
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">u</div>
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">lar</div>
-
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">al</div>
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">che</div>
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">my</div>
-
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">in</div>
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">tel</div>
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">li</div>
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">gent</div>
-
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">sim</div>
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">plic</div>
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">i</div>
-          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">ty</div>
+          <div
+          v-for="(piece, index) in availablePieces"
+          :key="index"
+          class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"
+          >
+          {{ piece }}
+          </div>
         </div>
 
         <div class="max-w-xl flex justify-around mx-auto text-amber-600 text-2xl mt-8 gap-y-3">
