@@ -47,6 +47,7 @@
           v-for="(piece, index) in availablePieces"
           :key="index"
           class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"
+          @click="selectAvailablePiece(index)"
           >
           {{ piece }}
           </div>
@@ -95,5 +96,19 @@ const selectAvailableSlot = (rowIndex) => {
   let updatedSlotIndex = userAnswers.value[rowIndex].findIndex(isNull)
 
   selectedSlot.value = { rowIndex, slotIndex: updatedSlotIndex }
+}
+
+const selectAvailablePiece = (index) => {
+  if (selectedSlot.value) {
+    let syllable = availablePieces.value[index]
+
+    if (userAnswers.value[selectedSlot.value.rowIndex][selectedSlot.value.slotIndex] === null) {
+      userAnswers.value[selectedSlot.value.rowIndex][selectedSlot.value.slotIndex] = syllable
+
+      availablePieces.value.splice(index, 1)
+
+      selectAvailableSlot(selectedSlot.value.rowIndex)
+    }
+  }
 }
 </script>
