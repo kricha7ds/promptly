@@ -6,6 +6,7 @@
     <div class="max-w-4xl mx-auto mt-8 py-5 bg-amber-50 rounded-2xl">
       <h2 class="flex justify-center items-center mb-4 text-2xl">Today's Puzzle</h2>
 
+      <!-- Game board -->
       <div class="mx-5">
         <div class="grid grid-cols-2 py-3 gap-6 hover:bg-amber-200">
           <div class="font-medium flex justify-end items-center p-3 text-right">Encourage growth or development</div>
@@ -52,6 +53,41 @@
             <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>i</p></div>
             <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>ty</p></div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scrambled pieces pool -->
+    <div>
+      <div class="max-w-4xl justicy-center mx-auto mt-8 p-5 bg-amber-50 rounded-2xl">
+        <div class="max-w-xl mx-auto flex flex-row flex-wrap gap-3 justify-center">
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">cul</div>
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">tiv</div>
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">ate</div>
+
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">reg</div>
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">u</div>
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">lar</div>
+
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">al</div>
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">che</div>
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">my</div>
+
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">in</div>
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">tel</div>
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">li</div>
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">gent</div>
+
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">sim</div>
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">plic</div>
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">i</div>
+          <div class="font-medium text-2xl py-1 px-3 bg-amber-200 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150">ty</div>
+        </div>
+
+        <div class="max-w-xl flex justify-around mx-auto text-amber-600 text-2xl mt-8 gap-y-3">
+          <button>Hint</button>
+          <button>Shuffle</button>
+          <button>Sort</button>
         </div>
       </div>
     </div>
