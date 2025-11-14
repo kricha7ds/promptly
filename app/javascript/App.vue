@@ -8,50 +8,24 @@
 
       <!-- Game board -->
       <div class="mx-5">
-        <div class="grid grid-cols-2 py-3 gap-6 hover:bg-amber-200">
-          <div class="font-medium flex justify-end items-center p-3 text-right">Encourage growth or development</div>
-          <div class="flex flex-row items-center gap-x-3 h-full">
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>cul</p></div>
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>tiv</p></div>
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>ate</p></div>
+        <div
+          v-for="(clue, index) in puzzle.clues"
+          :key="index"
+          class="grid grid-cols-2 py-3 gap-6 hover:bg-amber-200"
+        >
+          <div class="font-medium flex justify-end items-center p-3 text-right">
+            {{ clue }}
           </div>
-        </div>
-
-        <div class="grid grid-cols-2 py-3 gap-6 hover:bg-amber-200">
-          <div class="font-medium flex justify-end items-center p-3 text-right">Normal; standard</div>
           <div class="flex flex-row items-center gap-x-3 h-full">
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>reg</p></div>
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>u</p></div>
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>lar</p></div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 py-3 gap-6 hover:bg-amber-200">
-          <div class="font-medium flex justify-end items-center p-3 text-right">Medieval precursor to chemsitry</div>
-          <div class="flex flex-row items-center gap-x-3 h-full">
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>al</p></div>
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>che</p></div>
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>my</p></div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 py-3 gap-6 hover:bg-amber-200">
-          <div class="font-medium flex justify-end items-center p-3 text-right">Smart and quick-witted</div>
-          <div class="flex flex-row items-center gap-x-3 h-full">
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>in</p></div>
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>tel</p></div>
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>li</p></div>
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>gent</p></div>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 py-3 gap-6 hover:bg-amber-200">
-          <div class="font-medium flex justify-end items-center p-3 text-right">Plainness or clarity</div>
-          <div class="flex flex-row items-center gap-x-3 h-full">
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>sim</p></div>
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>plic</p></div>
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>i</p></div>
-            <div class="flex items-center justify-center py-1 px-3 min-w-10 bg-white rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"><p>ty</p></div>
+            <div
+            v-for="placeholderIndex in puzzle.placeholderSlots[index]"
+            :key="placeholderIndex"
+            class="flex items-center justify-center py-1 px-3 min-w-10 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"
+            :class="userAnswers[index][placeholderIndex - 1] ? 'bg-amber-100 hover:bg-white hover:cursor-pointer hover:drop-shadow-lg/50' : 'bg-amber-100 hover:bg-white'"
+            >
+            <p v-if="userAnswers[index][placeholderIndex - 1]">{{ userAnswers[index][placeholderIndex - 1] }}</p>
+            <p v-else>&nbsp;</p>
+            </div>
           </div>
         </div>
       </div>
@@ -94,7 +68,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 const puzzle = ref({
   clues: [
@@ -105,7 +79,8 @@ const puzzle = ref({
     'Plainness or clarity'
   ],
   pieces: ['cul', 'tiv', 'ate', 'reg', 'u', 'lar', 'al', 'chem', 'my', 'in', 'tel', 'li', 'gent', 'sim', 'plic', 'i', 'ty'],
-  answers: ['cultivate', 'regular', 'alchemy', 'intelligent', 'simplicity']
+  answers: ['cultivate', 'regular', 'alchemy', 'intelligent', 'simplicity'],
+  placeholderSlots: [3, 3, 3, 4, 4] // Number of pieces needed for each word
 })
 
 // to track which pieces are placed in each row
@@ -118,7 +93,4 @@ const userAnswers = ref([
 ])
 
 const availablePieces = ref([...puzzle.value.pieces])
-export default {
-  name: 'App'
-}
 </script>
