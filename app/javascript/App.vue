@@ -24,7 +24,7 @@
             <div
             v-for="placeholderIndex in puzzle.placeholderSlots[index]"
             :key="placeholderIndex"
-            class="flex items-center justify-center py-1 px-3 min-w-10 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"
+            class="group relative flex items-center justify-center py-1 px-3 min-w-10 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"
             :class="{
               'bg-white drop-shadow-lg/50': selectedSlot && selectedSlot.rowIndex === index && selectedSlot.slotIndex === placeholderIndex - 1,
               'bg-amber-100 hover:bg-white hover:drop-shadow-lg/50': !(selectedSlot && selectedSlot.rowIndex === index && selectedSlot.slotIndex === placeholderIndex - 1)
@@ -33,6 +33,14 @@
             >
             <p v-if="userAnswers[index][placeholderIndex - 1]">{{ userAnswers[index][placeholderIndex - 1] }}</p>
             <p v-else>&nbsp;</p>
+
+              <button
+                v-if="userAnswers[index][placeholderIndex - 1]"
+                class="absolute -top-1.5 -right-1.5 size-4 leading-none bg-red-500 text-white rounded-full text-xs opacity-0 group-hover:opacity-100 cursor-pointer transition-opacity flex justify-center items-center"
+                @click.stop="removePiece(index, placeholderIndex - 1)"
+              >
+                ×
+              </button>
             </div>
           </div>
         </div>
@@ -69,7 +77,7 @@ const puzzle = ref({
   clues: [
     'Encourage growth or development',
     'Normal; standard',
-    'Medieval precursor or development',
+    'Medieval precursor to chemistry',
     'Smart and quick-witted',
     'Plainness or clarity'
   ],
@@ -106,9 +114,21 @@ const selectAvailablePiece = (index) => {
       userAnswers.value[selectedSlot.value.rowIndex][selectedSlot.value.slotIndex] = syllable
 
       availablePieces.value.splice(index, 1)
+    } else { // swap game piece
+      let pieceToRemove = userAnswers.value[selectedSlot.value.rowIndex][selectedSlot.value.slotIndex]
 
-      selectAvailableSlot(selectedSlot.value.rowIndex)
+      userAnswers.value[selectedSlot.value.rowIndex][selectedSlot.value.slotIndex] = syllable
+      availablePieces.value.splice(index, 1, pieceToRemove)
     }
+
+    selectAvailableSlot(selectedSlot.value.rowIndex)
   }
+}
+
+const removePiece = (rowIndex, slotIndex) => {
+  let pieceToRemove = userAnswers.value[rowIndex][slotIndex]
+
+  userAnswers.value[rowIndex][slotIndex] = null
+  availablePieces.value.push(pieceToRemove)
 }
 </script>
