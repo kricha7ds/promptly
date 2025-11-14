@@ -21,7 +21,11 @@
             v-for="placeholderIndex in puzzle.placeholderSlots[index]"
             :key="placeholderIndex"
             class="flex items-center justify-center py-1 px-3 min-w-10 rounded hover:cursor-pointer hover:drop-shadow-lg/50 transition duration-150"
-            :class="userAnswers[index][placeholderIndex - 1] ? 'bg-amber-100 hover:bg-white hover:cursor-pointer hover:drop-shadow-lg/50' : 'bg-amber-100 hover:bg-white'"
+            :class="{
+              'bg-white drop-shadow-lg/50': selectedSlot && selectedSlot.rowIndex === index && selectedSlot.slotIndex === placeholderIndex - 1,
+              'bg-amber-100 hover:bg-white hover:drop-shadow-lg/50': !(selectedSlot && selectedSlot.rowIndex === index && selectedSlot.slotIndex === placeholderIndex - 1)
+            }"
+            @click="selectSlot(index, placeholderIndex - 1)"
             >
             <p v-if="userAnswers[index][placeholderIndex - 1]">{{ userAnswers[index][placeholderIndex - 1] }}</p>
             <p v-else>&nbsp;</p>
@@ -79,4 +83,10 @@ const userAnswers = ref([
 ])
 
 const availablePieces = ref([...puzzle.value.pieces])
+
+const selectedSlot = ref(null)
+
+const selectSlot = (rowIndex, slotIndex) => {
+  selectedSlot.value = { rowIndex, slotIndex }
+}
 </script>
