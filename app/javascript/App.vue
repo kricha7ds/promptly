@@ -95,6 +95,29 @@
 </template>
 
 <script>
+import { ref } from 'vue'
+const puzzle = ref({
+  clues: [
+    'Encourage growth or development',
+    'Normal; standard',
+    'Medieval precursor or development',
+    'Smart and quick-witted',
+    'Plainness or clarity'
+  ],
+  pieces: ['cul', 'tiv', 'ate', 'reg', 'u', 'lar', 'al', 'chem', 'my', 'in', 'tel', 'li', 'gent', 'sim', 'plic', 'i', 'ty'],
+  answers: ['cultivate', 'regular', 'alchemy', 'intelligent', 'simplicity']
+})
+
+// to track which pieces are placed in each row
+const userAnswers = ref([
+  [], // Row 1
+  [], // Row 2
+  [], // Row 3
+  [], // Row 4
+  [], // Row 5
+])
+
+const availablePieces = ref([...puzzle.value.pieces])
 export default {
   name: 'App'
 }
